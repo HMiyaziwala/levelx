@@ -1,7 +1,5 @@
 target_sources(${PROJECT_NAME} PRIVATE
     # {{BEGIN_TARGET_SOURCES}}
-	${CMAKE_CURRENT_LIST_DIR}/src/fx_nand_flash_simulated_driver.c
-	${CMAKE_CURRENT_LIST_DIR}/src/fx_nor_flash_simulator_driver.c
 	${CMAKE_CURRENT_LIST_DIR}/src/lx_nand_flash_256byte_ecc_check.c
 	${CMAKE_CURRENT_LIST_DIR}/src/lx_nand_flash_256byte_ecc_compute.c
 	${CMAKE_CURRENT_LIST_DIR}/src/lx_nand_flash_block_allocate.c
@@ -63,6 +61,13 @@ target_sources(${PROJECT_NAME} PRIVATE
 
     # {{END_TARGET_SOURCES}}
 )
+
+if (NOT LX_STANDALONE_ENABLE)
+	target_sources(${PROJECT_NAME} PRIVATE
+		${CMAKE_CURRENT_LIST_DIR}/src/fx_nand_flash_simulated_driver.c
+		${CMAKE_CURRENT_LIST_DIR}/src/fx_nor_flash_simulator_driver.c
+	)
+endif()
 
 # Add the Common/inc directory to the project include list
 target_include_directories(${PROJECT_NAME} PUBLIC 

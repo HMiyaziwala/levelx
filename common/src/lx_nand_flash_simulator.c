@@ -27,7 +27,10 @@
 
 /* Define constants for the NAND flash simulation. */
 
-#define TOTAL_BLOCKS                        1024
+#ifndef TOTAL_BLOCKS
+    #define TOTAL_BLOCKS                        1024
+#endif
+#ifndef PHYSICAL_PAGES_PER_BLOCK
 #define PHYSICAL_PAGES_PER_BLOCK            256         /* Min value of 2                                               */
 #define BYTES_PER_PHYSICAL_PAGE             512         /* 512 bytes per page                                           */ 
 #define WORDS_PER_PHYSICAL_PAGE             512 / 4     /* Words per page                                               */ 
